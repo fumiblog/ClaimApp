@@ -10,7 +10,7 @@ module ApplicationHelper
       canonical: request.original_url,
       separator: '|',
       icon: [
-        { href: image_url('coffee.png') }
+        { href: image_url('glass.png') }
       ],
       og: {
         site_name: :site, # もしくは site_name: :site
@@ -18,7 +18,7 @@ module ApplicationHelper
         description: :description, # もしくは description: :description
         type: 'claim_site',
         url: request.original_url,
-        image: image_url('coffee.png'),
+        image: image_url('glass.png'),
         locale: 'ja_JP',
       },
       twitter: {

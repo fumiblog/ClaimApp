@@ -1,2 +1,48 @@
-<h1>Admins::Admins#index</h1>
-<p>Find me in app/views/admins/admins/index.html.erb</p>
+<div class="container-fruid alert alert-secondary">
+  <div class="row">
+    <h3 class="m-3">Dashboard</h3>
+    <div class="row dash">
+      <div class="col-sm alert alert-primary text-primary m-3 p-3" style= "height:180px;">
+        <h3>Welcome Back, fumihisa!</h3>
+        <div>
+          Lv.88 Exp.1024
+          <%= image_tag 'engineer.png', class: "float-right", :size => '150x110' %>
+        </div>
+      </div>
+      <div class="col-sm bg-light text-secondary m-3 p-3 small" style= "height:180px;">
+        <h5>
+          消費税。現在は
+          <% if Date.today >= Tax.all.order(change_date: "DESC").first.change_date %>
+            <a class="text-success"><%= Tax.all.order(change_date: "DESC").first.tax %></a>%です。
+          <% else %>
+            <a class="text-success">
+              <%= Tax.all.order(change_date: "DESC").second.tax %>%
+            </a>です。
+            <%= Tax.all.order(change_date: "DESC").first.change_date %>に<%= Tax.all.order(change_date: "DESC").first.tax %>%になります。
+          <% end %>
+        </h5>
+        <%= form_with model: @tax, url:admins_admins_path(@tax), local: true do |f| %>
+          日付：<%= f.date_field :change_date %>　消費税：<%= f.text_field :tax, :size => "5" %>%
+          <%= f.submit "予約" %>
+        <% end %>
+        <% @taxes.each do |tax| %>
+          <%= tax.change_date %>（<%= tax.tax %>%）<%= link_to "del", admins_admin_path(tax), method: :delete %>、
+        <% end %>
+      </div>
+      <div class="row dash">
+        <div class="col-sm bg-light text-secondary m-3 p-3" style= "height:180px;">
+          <canvas id="genre_graph" height="100"></canvas>
+        </div>
+        <div class="col-sm bg-light text-secondary m-3 p-3" style= "height:180px;">
+          <canvas id="blog_count" height="100"></canvas>
+        </div>
+      </div>
+      <div class="row dash">
+        <div class="col-sm bg-light text-secondary m-3 p-3" style= "height:180px;">
+          <canvas id="" height="100"></canvas>
+        </div>
+        <div class="col-sm bg-light text-secondary m-3 p-3" style= "height:180px;">
+        </div>
+      </div>
+  </div>
+</div>

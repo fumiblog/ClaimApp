@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admins do
-    resources :admins, only: [:index]
+    resources :admins, only: [:index, :create, :destroy]
   end
   devise_for :admins, skip: :all
   devise_scope :admin do
@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     post 'customers' => 'public/registrations#create', as: 'customer_registration'
     get 'customers/password/new' => 'public/passwords#new', as: 'new_customer_password'
   end
+
+  root 'admins/admins#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
