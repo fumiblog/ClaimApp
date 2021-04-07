@@ -21,13 +21,18 @@
             <%= Tax.all.order(change_date: "DESC").first.change_date %>に<%= Tax.all.order(change_date: "DESC").first.tax %>%になります。
           <% end %>
         </h5>
-        <%= form_with model: @tax, url:admins_admins_path(@tax), local: true do |f| %>
-          日付：<%= f.date_field :change_date %>　消費税：<%= f.text_field :tax, :size => "5" %>%
-          <%= f.submit "予約" %>
-        <% end %>
-        <% @taxes.each do |tax| %>
-          <%= tax.change_date %>（<%= tax.tax %>%）<%= link_to "del", admins_admin_path(tax), method: :delete %>、
-        <% end %>
+        <p class="tax_input">
+          <%= form_with model: @tax, url:admins_admins_path(@tax), local: true do |f| %>
+            日付：<%= f.date_field :change_date %>　消費税：<%= f.text_field :tax, :size => "5" %>%
+            <%= f.submit "予約" %>
+          <% end %>
+        </p>
+        <div class="tax_history">
+          消費税履歴
+          <% @taxes.each do |tax| %>
+            <%= tax.change_date %>（<%= tax.tax %>%）<%= link_to "del", admins_admin_path(tax), method: :delete %>、
+          <% end %>
+        </div>
       </div>
       <div class="row dash">
         <div class="col-sm bg-light text-secondary m-3 p-3" style= "height:180px;">
