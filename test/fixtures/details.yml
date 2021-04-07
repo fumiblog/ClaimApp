@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estimate_id: 1
+  genre_id: 1
+  product: MyString
+  model: MyString
+  amount: 1
+  unitprice: 1
+  remark: MyString
+  general_remark: 
+
+two:
+  estimate_id: 1
+  genre_id: 1
+  product: MyString
+  model: MyString
+  amount: 1
+  unitprice: 1
+  remark: MyString
+  general_remark: 
