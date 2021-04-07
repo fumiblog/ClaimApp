@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :admins, only: [:index, :create, :destroy]
   end
+
+  namespace :customers do
+    resources :estimates
+  end
+
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
