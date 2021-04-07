@@ -1,0 +1,35 @@
+<div class="container flude">
+  <div class="row">
+    <table class="table table-striped small">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>日付</th>
+          <th>TEL</th>
+          <th>お客様名</th>
+          <th>担当者</th>
+          <th>詳細</th>
+          <th>金額</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @estimates.each do |estimate| %>
+          <tr>
+            <td><%= estimate.id %></td>
+            <td><%= estimate.date %></td>
+            <td><%= estimate.incharge.telephone %></td>
+            <td><%= estimate.customer.company %></td>
+            <td><%= estimate.incharge.name %></td>
+            <td><%= estimate.subject %></td>
+            <td><%= (estimate.amount1*unit_price1+estimate.amount2*unit_price2+estimate.amount3*unit_price3+estimate.amount4*unit_price4+estimate.amount5*unit_price5+estimate.amount6*unit_price6+estimate.amount7*unit_price7+estimate.amount8*unit_price8+estimate.amount9*unit_price9+estimate.amount10*unit_price10+estimate.amount11*unit_price11+estimate.amount12*unit_price12+estimate.amount13*unit_price13+estimate.amount14*unit_price14+estimate.amount15*unit_price15+estimate.amount16*unit_price16+estimate.amount17*unit_price17+estimate.amount18*unit_price18+estimate.amount19*unit_price19+estimate.amount20*unit_price20).to_s(:delimited) %></td>
+            <%= link_to "訂正", edit_customer_estimate_path(estimate), class: "btn btn-success" %>
+            <%= link_to "削除", customer_estimate_path(estimate),method: :delite, class: "btn btn-danger" %>
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,4 +1,4 @@
 class Estimate < ApplicationRecord
   belongs_to :genre
-  beloggs_to :in_charge
+  belongs_to :in_charge
 end

@@ -1,0 +1,2 @@
+module Customers::EstimatesHelper
+end
