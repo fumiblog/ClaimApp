@@ -63,6 +63,7 @@ gem 'chart-js-rails'
 gem 'gon'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'react-rails'
 
 # back
 gem 'devise'

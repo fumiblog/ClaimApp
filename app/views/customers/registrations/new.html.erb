@@ -1,0 +1,63 @@
+<div class="container flued">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 alert alert-primary text-primary text-center m-2 p-2">
+      <h3>Sign up</h3>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "customers/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "30" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :名前 %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", :size => "30" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :会社名 %><br />
+          <%= f.text_field :company, autofocus: true, autocomplete: "company", :size => "30" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :郵便番号 %><br />
+          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", :size => "10" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :住所 %><br />
+          <%= f.text_field :address, autofocus: true, autocomplete: "address", :size => "40" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :電話番号 %><br />
+          <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", :size => "15" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", :size => "30" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "30" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+
+      <%= render "customers/shared/links" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+

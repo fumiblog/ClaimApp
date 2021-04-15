@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'cat/index'
   namespace :admins do
     resources :admins, only: [:index, :create, :destroy]
   end
 
   namespace :customers do
     resources :estimates
+    resources :customers
   end
 
   devise_for :admins, controllers: {

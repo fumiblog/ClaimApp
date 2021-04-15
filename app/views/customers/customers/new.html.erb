@@ -1,0 +1,11 @@
+<div class="container flued">
+  <div class="row">
+    <h3>マイアカウント</h3>
+    <%= form_with model: @customer, url: customers_customers_path, local: true do |f| %>
+      <div class="col-auto">
+        <p>email:<%= f.email_field :email %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
