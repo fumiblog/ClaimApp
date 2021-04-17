@@ -1,0 +1,27 @@
+class Admins::CustomerUsersController < ApplicationController
+  def index
+    @customer_users = CustomerUser.all
+    @customer_user = CustomerUser.new
+  end
+
+  def create
+    @customer_user = CustomerUser.find(:custmer_user_params)
+    @customer_user.save
+    redirect_to admins_customer_users_path
+  end
+
+  
+
+
+  private
+  def customer_user_params
+    params.require(:customer_user).permit(
+      :customer_id,
+      :company,
+      :postal_code,
+      :address,
+      :telephone,
+      :department
+    )
+  end
+end
