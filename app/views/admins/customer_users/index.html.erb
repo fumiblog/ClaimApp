@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="customer_user_make">
+      <h3>得意先登録</h3>
+      <%= form_with model: @customer_user, url: admins_customer_users_path, local: true do |f| %>
+        <p>会社名：<%= f.text_field :company, :size => "25" %>　支社店：<%= f.text_field :department, :size => "15" %>　社長名：<%= f.text_field :name, :size => "10" %></p>
+        <p>
+          〒　　：<%= f.text_field :postal_code, :size => "10" %>　住　所：<%= f.text_field :address, :size => "40" %>　TEL　：<%= f.text_field :telephone, :size => "12" %>　<%= f.submit "登録", class: "btn btn-primary btn-sm" %>
+        </p>
+      <% end %>
+    </div>
+    <div class="customer_user_list">
+      <table class="table table-striped small">
+        <thead>
+          <tr>
+            <th>会社名</th>
+            <th>支社店</th>
+            <th>責任者</th>
+            <th>TEL</th>
+            <th>〒</th>
+            <th>住所</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customer_users.each do |user| %>
+            <tr>
+              <td><%= user.company %></td>
+              <td><%= user.department %></td>
+              <td><%= user.name %></td>
+              <td><%= user.telephone %></td>
+              <td><%= user.postal_code %></td>
+              <td><%= user.address %></td>
+              <td><%= link_to "訂正", edit_admins_customer_user_path(user), class: "btn btn-warning btn-sm" %></td>
+              <td><%= link_to "削除", admins_customer_user_path(user), dependent: :destroy, class: "btn btn-danger btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
