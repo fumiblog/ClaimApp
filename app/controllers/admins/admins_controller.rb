@@ -24,4 +24,6 @@ class Admins::AdminsController < ApplicationController
     )
   end
 
+  
+
 end

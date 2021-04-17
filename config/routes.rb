@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'cat/index'
   namespace :admins do
     resources :admins, only: [:index, :create, :destroy]
+    resources :customer_users
   end
 
   namespace :customers do
