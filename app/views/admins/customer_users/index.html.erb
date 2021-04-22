@@ -30,25 +30,25 @@
               <td><%= user.name %></td>
               <td><%= user.telephone %></td>
               <td>
-                <div class="sidebar-menu">
-                  <div class="sidebar-dropdown">
+                <div class="wrap">
+                  <div class="open_h3 btn-1">
                     <a href="#">
-                      <span class="badge badge-pill badge-warning"><%= @in_charges.where(customeruser_id: user.id).count %></span>
+                      <span class="badge badge-pill badge-success"><%= @in_charges.where(customeruser_id: user.id).count %></span>
                     </a>
-                    <div class="sidebar-submenu">
-                      <% @in_charges.where(customeruser_id: user.id).each do |incharge| %>
-                        <ul>
-                          <li>
-                            <a href="<%= edit_admins_in_charge_path(incharge) %>">
-                              <%= incharge.name %>
-                              <span class="badge badge-pill badge-success">
-                                <%= incharge.telephone %>
-                              </span>
-                            </a>
-                          </li>
-                        </ul>
-                      <% end %>
-                    </div>
+                  </div>
+                  <div class="info open-1">
+                    <% @in_charges.where(customeruser_id: user.id).each do |incharge| %>
+                      <ul>
+                        <li>
+                          <a href="<%= edit_admins_in_charge_path(incharge) %>">
+                            <%= incharge.name %>
+                            <span class="badge badge-pill badge-success">
+                              <%= incharge.telephone %>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    <% end %>
                   </div>
                 </div>
               </td>
