@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_061648) do
+ActiveRecord::Schema.define(version: 2021_04_18_224726) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_061648) do
 
   create_table "in_charges", force: :cascade do |t|
     t.integer "customeruser_id"
-    t.string "Department"
+    t.string "department"
     t.string "name"
     t.string "telephone"
     t.string "email"

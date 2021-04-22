@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="customer_incharge_make">
+      <h3>得意先担当登録</h3>
+      <h5 class="bg-dark text-white"><%= @customer_user.company %></h5>
+      <%= form_with model: @in_charge, url: admins_in_charges_path, local: true do |f| %>
+        <p>部署名：<%= f.text_field :department, :size => "15" %>　担当名：<%= f.text_field :name, :size => "10" %>　e-mail：<%= f.email_field :email, :size => "35" %></p>
+        <p>
+          〒　　：<%= f.text_field :postal_code, :size => "10", :value => @customer_user.postal_code %>　住　所：<%= f.text_field :address, :size => "40", :value => @customer_user.address %>　TEL　：<%= f.text_field :telephone, :size => "12", :value => @customer_user.telephone %>　<%= f.hidden_field :customeruser_id, :value => @customer_user.id %><%= f.submit "登録", class: "btn btn-primary btn-sm" %>
+        </p>
+      <% end %>
+      <%# byebug %>
+    </div>
+    <div class="customer_incharge_list">
+      <table class="table table-striped small">
+        <thead class="text-center">
+          <tr>
+            <th>部署名</th>
+            <th>担当者</th>
+            <th>email</th>
+            <th>TEL</th>
+            <th>〒</th>
+            <th>住所</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @in_charges.each do |incharge| %>
+            <tr>
+              <td><%= link_to incharge.company, admins_in_charges_path %></td>
+              <td><%= incharge.department %></td>
+              <td><%= incharge.name %></td>
+              <td><%= incharge.email %></td>
+              <td><%= incharge.telephone %></td>
+              <td><%= incharge.postal_code %></td>
+              <td><%= incharge.address %></td>
+              <td><%= link_to "訂正", edit_admins_customer_in_charges_path(incharge), class: "btn btn-warning btn-sm" %></td>
+              <td><%= link_to "削除", admins_customer_in_charges_path(incharge), dependent: :destroy, class: "btn btn-danger btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

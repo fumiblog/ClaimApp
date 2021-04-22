@@ -2,6 +2,7 @@ class Admins::CustomerUsersController < ApplicationController
   def index
     @customer_users = CustomerUser.all
     @customer_user = CustomerUser.new
+    @in_charges = InCharge.all
   end
 
   def create

@@ -1,4 +1,3 @@
 class InCharge < ApplicationRecord
-  belongs_to :Customer
-  has_many :in_charges, dependent: :destroy
+  belongs_to :customer_users, optional: true
 end
