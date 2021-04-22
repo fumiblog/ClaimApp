@@ -11,14 +11,13 @@
     </div>
     <div class="customer_user_list">
       <table class="table table-striped small">
-        <thead>
+        <thead class="text-center">
           <tr>
             <th>会社名</th>
             <th>支社店</th>
             <th>責任者</th>
             <th>TEL</th>
-            <th>〒</th>
-            <th>住所</th>
+            <th>担当者</th>
             <th></th>
             <th></th>
           </tr>
@@ -26,12 +25,31 @@
         <tbody>
           <% @customer_users.each do |user| %>
             <tr>
-              <td><%= user.company %></td>
+              <td><%= link_to user.company, new_admins_in_charge_path(:id => user.id) %></td>
               <td><%= user.department %></td>
               <td><%= user.name %></td>
               <td><%= user.telephone %></td>
-              <td><%= user.postal_code %></td>
-              <td><%= user.address %></td>
+              <td>
+                <div class="sidebar-dropdown">
+                  <a href="#">
+                    <span class="badge badge-pill badge-warning"><%= @in_charges.count %></span>
+                  </a>
+                  <div class="sidebar-submenu">
+                    <% @in_charges.each do |incharge| %>
+                      <ul>
+                        <li>
+                          <a href="<%= edit_admins_in_charge_path(incharge) %>">
+                            <%= incharge.name %>
+                            <span class="badge badge-pill badge-success">
+                              <%= incharge.telephone %>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
               <td><%= link_to "訂正", edit_admins_customer_user_path(user), class: "btn btn-warning btn-sm" %></td>
               <td><%= link_to "削除", admins_customer_user_path(user), dependent: :destroy, class: "btn btn-danger btn-sm" %></td>
             </tr>

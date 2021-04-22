@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="customer_incharge_make">
+      <h3>得意先担当登録</h3>
+      <h5 class="bg-dark text-white"><%= @customer_user.company %></h5>
+      <%= form_with model: @in_charge, url: admins_in_charges_path, local: true do |f| %>
+        <p>部署名：<%= f.text_field :department, :size => "20" %>　担当名：<%= f.text_field :name, :size => "10" %>　e-mail：<%= f.email_field :email, :size => "35" %></p>
+        <p>
+          〒　　：<%= f.text_field :postal_code, :size => "10", :value => @customer_user.postal_code %>　住　所：<%= f.text_field :address, :size => "40", :value => @customer_user.address %>　TEL　：<%= f.text_field :telephone, :size => "13", :value => @customer_user.telephone %>　<%= f.hidden_field :customeruser_id, :value => @customer_user.id %><%= f.submit "登録", class: "btn btn-primary btn-sm" %>
+        </p>
+      <% end %>
+      <%# byebug %>
+    </div>
+  </div>
+</div>

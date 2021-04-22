@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :admins, only: [:index, :create, :destroy]
     resources :customer_users
+    resources :in_charges
   end
 
   namespace :customers do
