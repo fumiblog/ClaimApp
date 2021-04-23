@@ -1,3 +1,3 @@
 class InCharge < ApplicationRecord
-  belongs_to :customer_users, optional: true
+  belongs_to :customer_user, optional: true
 end
