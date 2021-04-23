@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :admins, only: [:index, :create, :destroy]
     resources :customer_users
     resources :in_charges
+    resources :estimates
   end
 
   namespace :customers do

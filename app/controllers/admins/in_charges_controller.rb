@@ -29,7 +29,7 @@ class Admins::InChargesController < ApplicationController
 
   def edit
     @in_charge = InCharge.find(params[:id])
-    @customer_user = CustomerUser.find(@in_charge.customeruser_id)
+    @customer_user = CustomerUser.find(@in_charge.customer_user_id)
   end
 
   def update

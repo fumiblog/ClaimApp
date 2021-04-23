@@ -7,7 +7,6 @@ class Admins::CustomerUsersController < ApplicationController
 
   def create
     @customer_user = CustomerUser.new(customer_user_params)
-    @customer_user.customer_id = 1
     @customer_user.save
     redirect_to admins_customer_users_path
   end

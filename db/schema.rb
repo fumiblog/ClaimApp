@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_224726) do
+ActiveRecord::Schema.define(version: 2021_04_23_030054) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_224726) do
 
   create_table "estimates", force: :cascade do |t|
     t.date "date"
-    t.integer "incharge_id"
+    t.integer "in_charge_id"
     t.string "subject"
     t.integer "payment_method"
     t.string "delivery_time"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2021_04_18_224726) do
   end
 
   create_table "in_charges", force: :cascade do |t|
-    t.integer "customeruser_id"
     t.string "department"
     t.string "name"
     t.string "telephone"
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_224726) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_user_id"
   end
 
   create_table "taxes", force: :cascade do |t|
