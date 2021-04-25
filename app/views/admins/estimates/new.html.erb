@@ -1,6 +1,39 @@
 <div class="container">
   <div class="row">
-    <h3>見積作成</h3>
-    <%= @in_charge.customer_user.company %>（）
+    <h3 class="text-center">見 積 書</h3>
+    <div class="col-sm-4 border m-2">
+      <p class="user-title border mt-n2 bg-dark text-white">お得意様</p>
+      <p class="h5">
+        <%= @in_charge.customer_user.company %>　御中
+      </p>
+      <p>
+        [ <%= @in_charge.department %> ] <%= @in_charge.name%>　様
+      </p>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 border m-2">
+      <p class="user-title border mt-n2 bg-dark text-white">見積内容</p>
+      <div class="estimate-make">
+        <%= form_with model: @estimate, url: admins_estimates_path, local: true do |f| %>
+          <p class="small">
+            【見積日】<%= f.date_field :date, :value => Time.now.strftime('%Y-%m-%d') %>
+          </p>
+          <p class="small">
+            【見積No】
+          </p>
+          <p class="small">
+            【見積表題】<%= f.text_field :subject %>
+          </p>
+          <p class="small">
+            【支払条件】<%= f.text_field :payment_method %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
   </div>
 </div>
