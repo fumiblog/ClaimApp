@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :in_charges
     resources :estimates
     resources :details
+    resources :genres
   end
 
   namespace :customers do

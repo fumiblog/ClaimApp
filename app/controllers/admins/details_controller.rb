@@ -1,7 +1,10 @@
 class Admins::DetailsController < ApplicationController
 
-  def new
+  def index
     @detail = Detail.new
+    # byebug
+    @estimate = Estimate.find(params[:id])
+    @details = Detail.all
   end
 
   def create
@@ -19,8 +22,7 @@ class Admins::DetailsController < ApplicationController
       :model,
       :amount,
       :unitprice,
-      :remark,
-      :general_remark
+      :remark
     )
   end
 
