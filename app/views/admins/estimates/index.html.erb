@@ -20,7 +20,7 @@
             <tr>
               <td><%= estimate.date.strftime('%y-%m-%d') %></td>
               <td><%= link_to estimate.in_charge.name, admins_estimates_path(:in_charge_id => estimate.in_charge_id) %></td>
-              <td><%= link_to estimate.subject, new_admins_detail_path %></td>
+              <td><%= link_to estimate.subject, admins_details_path(:id => estimate.id) %></td>
               <td><%= estimate.payment_method %></td>
               <td><%= estimate.delivery_time %></td>
               <td><%= estimate.price %></td>
