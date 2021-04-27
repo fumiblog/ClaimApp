@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :estimates, dependent: :destroy
+  has_many :details, dependent: :destroy
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :customer_users
     resources :in_charges
     resources :estimates
+    resources :details
   end
 
   namespace :customers do
