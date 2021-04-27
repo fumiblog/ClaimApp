@@ -22,11 +22,9 @@
       <p class="user-title border mt-n2 bg-dark text-white">見積内容</p>
       <div class="estimate-make">
         <%= form_with model: @estimate, url: admins_estimates_path, local: true do |f| %>
+          <%= f.hidden_field :in_charge_id, :value => @in_charge.id %>
           <p class="small">
             【見積日】<%= f.date_field :date, :value => Time.now.strftime('%Y-%m-%d') %>
-          </p>
-          <p class="small">
-            【見積No】
           </p>
           <p class="small">
             【見積表題】<%= f.text_field :subject %>
@@ -38,6 +36,9 @@
           <p class="small">
             【納　　期】<%= f.text_field :delivery_time %>
           </p>
+          <div class="text-right">
+            <%= f.submit "作成", class: "btn btn-primary btn-sm m-1" %>
+          </div>
         <% end %>
       </div>
     </div>

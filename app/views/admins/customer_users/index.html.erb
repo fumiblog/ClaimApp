@@ -53,7 +53,7 @@
                 </div>
               </td>
               <td><%= link_to "訂正", edit_admins_customer_user_path(user), class: "btn btn-warning btn-sm" %></td>
-              <td><%= link_to "削除", admins_customer_user_path(user), dependent: :destroy, class: "btn btn-danger btn-sm" %></td>
+              <td><%= link_to "削除", admins_customer_user_path(user), method: :delete, class: "btn btn-danger btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>

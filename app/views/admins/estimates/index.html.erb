@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4>見積一覧</h4>
+      <table class="table table-striped small">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>担当</th>
+            <th>表題</th>
+            <th>支払</th>
+            <th>納期</th>
+            <th>金額</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @estimates.each do |estimate| %>
+            <tr>
+              <td><%= estimate.date.strftime('%y-%m-%d') %></td>
+              <td><%= link_to estimate.in_charge.name, admins_estimates_path(:in_charge_id => estimate.in_charge_id) %></td>
+              <td><%= link_to estimate.subject, new_admins_detail_path %></td>
+              <td><%= estimate.payment_method %></td>
+              <td><%= estimate.delivery_time %></td>
+              <td><%= estimate.price %></td>
+              <td>
+                <%= link_to "訂正", edit_admins_estimate_path(estimate), class: "btn btn-warning btn-sm" %>
+              </td>
+              <td>
+                <%= link_to "削除", admins_estimate_path(estimate), method: :delete, class: "btn btn-danger btn-sm"  %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <table class="table table-striped">
+        <h4>担当一覧</h4>
+        <thead>
+          <tr>
+            <th>担当</th>
+            <th>TEL</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @in_charges.each do |incharge| %>
+            <tr>
+              <td><%= link_to incharge.name, admins_estimates_path(:in_charge_id => incharge.id) %></td>
+              <td><%= incharge.telephone %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <h4></h4>
+    </div>
+  </div>
+</div>
