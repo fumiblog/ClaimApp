@@ -33,11 +33,13 @@
           <tbody>
             <%= form_with model: @detail, url: admins_details_path(@detail), local: true do |f| %>
               <tr>
-                <td><%= f.collection_select :genre_id, @genre, :name, :id %></td>
-                <td><%= f.text_feild :product %></td>
-                <td><%= f.text_feild :model %></td>
-                <td><%= f.text_feild :unitprice %></td>
-                <td><%= f.number_feild :amount %></td>
+                <td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
+                <td><%= f.text_field :product %></td>
+                <td><%= f.text_field :model %></td>
+                <td><%= f.text_field :unitprice %></td>
+                <td><%= f.number_field :amount, :size =>"5" %></td>
+                <td></td>
+                <td><%= f.submit "追加", class: "btn btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>

@@ -2,9 +2,9 @@ class Admins::DetailsController < ApplicationController
 
   def index
     @detail = Detail.new
-    # byebug
     @estimate = Estimate.find(params[:id])
     @details = Detail.all
+    @genres = Genre.all
   end
 
   def create
