@@ -3,49 +3,88 @@
     <div class="col-sm-8">
       <div class="estimate-basic">
         <h4>見積基本データ</h4>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th><%= @estimate.date %></th>
-                <th><%= @estimate.in_charge.name %></th>
-                <th><%= @estimate.subject %></th>
-                <th><%= @estimate.payment_method %></th>
-                <th><%= @estimate.delivery_time %></th>
-                <th></th>
-                <th><%= link_to "訂正", admins_estimate_path(@estimate), class: "btn btn-warning btn-sm" %></th>
-              </tr>
-            </thead>
-          </table>
-      </div>
-      <div class="detail-make">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>ジャンル</th>
-              <th>商品名</th>
-              <th>型　式</th>
-              <th>単　価</th>
-              <th>数　量</th>
-              <th>金　額</th>
-              <th>備　考</th>
+              <th><%= @estimate.date %></th>
+              <th><%= @estimate.in_charge.name %></th>
+              <th><%= @estimate.subject %></th>
+              <th><%= @estimate.payment_method %></th>
+              <th><%= @estimate.delivery_time %></th>
+              <th></th>
+              <th><%= link_to "訂正", admins_estimate_path(@estimate), class: "btn btn-warning btn-sm" %></th>
             </tr>
           </thead>
-          <tbody>
-            <%= form_with model: @detail, url: admins_details_path(@detail), local: true do |f| %>
-              <tr>
-                <td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
-                <td><%= f.text_field :product %></td>
-                <td><%= f.text_field :model %></td>
-                <td><%= f.text_field :unitprice %></td>
-                <td><%= f.number_field :amount, :size =>"5" %></td>
-                <td></td>
-                <td><%= f.submit "追加", class: "btn btn-primary" %></td>
-              </tr>
-            <% end %>
-          </tbody>
         </table>
       </div>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="col-sm-4 border">
+      <h4>見積金額</h4>
+      <p class="text-right"><%#=  %></p>
+    </div>
+  </div>
+  <div class="detail-make">
+    <h4>見積明細作成</h4>
+    <table class="table table-striped">
+      <thead class="text-center">
+        <tr>
+          <th>ジャンル</th>
+          <th>商品名</th>
+          <th>型　式</th>
+          <th>単　価</th>
+          <th>数　量</th>
+          <th>備　考</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= form_with model: @detail, url: admins_details_path(@detail), local: true do |f| %>
+          <tr>
+            <%= f.hidden_field :estimate_id, value: @estimate.id %>
+            <td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
+            <td><%= f.text_field :product %></td>
+            <td><%= f.text_field :model, :size => "10" %></td>
+            <td><%= f.text_field :unitprice, :size => "10" %></td>
+            <td><%= f.text_field :amount, :size => "5" %></td>
+            <td><%= f.text_field :remark %></td>
+            <%#= byebug %>
+            <td><%= f.submit "追加", class: "btn btn-primary btn-sm" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="detail-list">
+    <h4>見積明細</h4>
+    <table class="table table-striped">
+      <thead class="text-center">
+        <tr>
+          <th>ジャンル</th>
+          <th>商品名</th>
+          <th>型　式</th>
+          <th>単　価</th>
+          <th>数　量</th>
+          <th>金　額</th>
+          <th>備　考</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @details.each do |detail| %>
+          <tr>
+            <td><%= detail.genre.name %></td>
+            <td><%= detail.product %></td>
+            <td><%= detail.model %></td>
+            <td class="text-right"><%= detail.unitprice.to_s(:delimited) %></td>
+            <td class="text-right"><%= detail.amount %></td>
+            <td class="text-right"><%= (detail.amount * detail.unitprice).to_s(:delimited) %></td>
+            <td><%= detail.remark %></td>
+            <td><%= link_to "訂正", admins_detail_path(detail), class: "btn btn-warning btn-sm" %></td>
+            <td><%= link_to "削除", admins_detail_path(detail), method: :delete, class: "btn btn-danger btn-sm" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
