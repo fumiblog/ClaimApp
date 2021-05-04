@@ -20,7 +20,14 @@
     </div>
     <div class="col-sm-4 border">
       <h4>見積金額</h4>
-      <p class="text-right"><%#=  %></p>
+      <p class="text-right">
+        <p class="h3 text-right">
+          <% @sum = 0 %>
+          <% @details.each do |detail| %>
+            <% @sum += detail.amount*detail.unitprice %>
+          <% end %>
+          <%= @sum.to_s(:delimited) %>円
+        </p>
     </div>
   </div>
   <div class="detail-make">
@@ -84,6 +91,7 @@
             <td><%= link_to "削除", admins_detail_path(detail), method: :delete, class: "btn btn-danger btn-sm" %></td>
           </tr>
         <% end %>
+        <%#= byebug %>
       </tbody>
     </table>
   </div>
