@@ -18,6 +18,16 @@ class Admins::DetailsController < ApplicationController
     redirect_to admins_details_path(id: @detail.estimate_id)
   end
 
+  def edit
+    @detail = Detail.find(params[:id])
+  end
+
+  def update
+    @detail = Detail.find(params[:id])
+    @detail.update(detail_params)
+    redirect_to admins_details_path(id: @detail.estimate_id)
+  end
+
   def destroy
     @detail = Detail.find(params[:id])
     @detail.destroy
