@@ -19,7 +19,9 @@
       </div>
     </div>
     <div class="col-sm-4 border">
-      <h4>見積金額</h4>
+      <div class="h4">
+        見積金額　<%= link_to "PDF", estimate_pdf_admins_details_path, class: "btn btn-success float-right btn-sm m-1" %>
+      </div>
       <p class="text-right">
         <p class="h3 text-right">
           <% @sum = 0 %>
