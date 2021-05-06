@@ -3,30 +3,42 @@
     <div class="col-5">
     </div>
     <div class="calc">
-      <div class="col-4">
+      <div class="col-sm-5">
         <h4>Hello WebCalc!</h4>
-        <input id="calc" style="font-size: 28px; text-align: right;" />
-        <button class="h1" onclick="append('1')" >1</button>
-        <button class="h1" onclick="append('2')" >2</button>
-        <button class="h1" onclick="append('3')" >3</button>
-        <button class="h1" onclick="append('4')" >4</button>
-        <button class="h1" onclick="append('5')" >5</button>
-        <button class="h1" onclick="append('6')" >6</button>
-        <button class="h1" onclick="append('7')" >7</button>
-        <button class="h1" onclick="append('8')" >8</button>
-        <button class="h1" onclick="append('9')" >9</button>
-        <button class="h1" onclick="append('0')" >0</button>
-        <button class="h1" onclick="append('.')" >.</button>
-        <button class="h1" onclick="append('+')" >+</button>
-        <button class="h1" onclick="append('-')" >-</button>
-        <button class="h1" onclick="append('*')" >*</button>
-        <button class="h1" onclick="append('/')" >/</button>
-        <button class="h1" onclick="append('**')" >^</button>
-        <button class="h1" onclick="append('**0.5')" >√</button>
-        <button class="h1" onclick="append('*0.01')" >%</button>
-        <button class="h1 bg-primary text-white" onclick="calc()" >=</button>
-        <button class="h1" onclick="update('')" >CLR</button>
+        <input id="calc" class="m-2" style="font-size: 28px; text-align: right;" />
+        <div class="row">
+          <div class="col-sm-7 text-center">
+            <button class="h1" onclick="append('1')" >1</button>
+            <button class="h1" onclick="append('2')" >2</button>
+            <button class="h1" onclick="append('3')" >3</button>
+            <button class="h1" onclick="append('4')" >4</button>
+            <button class="h1" onclick="append('5')" >5</button>
+            <button class="h1" onclick="append('6')" >6</button>
+            <button class="h1" onclick="append('7')" >7</button>
+            <button class="h1" onclick="append('8')" >8</button>
+            <button class="h1" onclick="append('9')" >9</button>
+            <button class="h1" onclick="append('0')" >0</button>
+            <button class="h1" onclick="append('.')" >.</button>
+            <button class="h1 bg-primary text-white" onclick="calc()" >=</button>
+          </div>
+          <div class="col-sm-5 text-center">
+            <button class="h1" onclick="update('')" >C</button>
+            <button class="h1" onclick="append('+')" >+</button>
+            <button class="h1" onclick="append('-')" >-</button>
+            <button class="h1" onclick="append('*')" >*</button>
+            <button class="h1" onclick="append('/')" >/</button>
+            <button class="h1" onclick="append('**')" >^</button>
+            <button class="h1" onclick="append('**0.5')" >√</button>
+            <button class="h1" onclick="append('*0.01')" >%</button>
+          </div>
+        </div>
       </div>
+      <style>
+        button {
+          width: 50px;
+          height: 50px;
+        }
+      </style>
       <script>
         function update(_v){
           document.querySelector('#calc').value = _v
